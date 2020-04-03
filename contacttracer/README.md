@@ -1,10 +1,10 @@
-# COVID19 Contact Tracing
+# contacttracer
 
-How to start the COVID19 Contact Tracing application
+How to start the contacttracer application
 ---
 
 1. Run `mvn clean install` to build your application
-1. Start application with `java -jar target/contact-tracing-0.1-SNAPSHOT.jar server config.yml`
+1. Start application with `java -jar target/contacttracer-0.1-SNAPSHOT.jar server config.yml`
 1. To check that your application is running enter url `http://localhost:8080`
 
 Health Check

@@ -1,0 +1,14 @@
+defaultInfectionWindowHours: 96
+
+database:
+  keyspace: covid19
+  seeds:
+    - host: 127.0.0.1
+      port: 9042
+  createSchema: true
+
+
+logging:
+  level: INFO
+  loggers:
+    com.datastax.projects: DEBUG

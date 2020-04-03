@@ -2,6 +2,7 @@ package com.datastax.projects.covid19simulator;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.Instant;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,8 +19,13 @@ public class SimulatorTest
     }
 
     @Test
+    public void dateTest() {
+        Instant.parse("2020-05-17T22:21:56.654Z");
+    }
+
+    @Test
     public void fileOutput() {
-        CmdLine.run("test2_", getConfig(10000, 24*28, 50, 0.1));
+        CmdLine.run("/Users/matthias/Data/covid19-sim/test_", getConfig(100, 24*28, 5, 0.02));
     }
 
     @Test

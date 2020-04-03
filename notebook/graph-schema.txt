@@ -1,0 +1,10 @@
+schema.type('diagnosis').ifNotExists().property('infectious_from', Timestamp).property('infectious_until', Timestamp).property('diagnosed_by', Varchar).property('diagnosed_on', Timestamp).create()
+schema.type('testresult').ifNotExists().property('time_taken', Timestamp).property('time_result', Timestamp).property('result', Boolean).create()
+
+schema.vertexLabel('device').ifNotExists().partitionBy('device_id', Varchar).property('last_sync', Timestamp).create()
+schema.vertexLabel('person').ifNotExists().partitionBy('person_id', Uuid).property('diagnoses', listOf(frozen(typeOf('diagnosis')))).property('tests', listOf(frozen(typeOf('testresult')))).create()
+
+schema.edgeLabel('contact').tableName('device_contact').ifNotExists().from('device').to('device').partitionBy(OUT, 'device_id', 'device1_id').clusterBy('time', Timestamp, Desc).clusterBy(IN, 'device_id', 'device2_id', Asc).property('duration_sec', Int).create()
+schema.edgeLabel('contact').from('device').to('device').materializedView('device_contact_inverse').ifNotExists().partitionBy(IN, 'device_id').clusterBy('time', Desc).clusterBy(OUT, 'device_id', Asc).create()
+schema.edgeLabel('own').tableName('person_owns_device').ifNotExists().from('person').to('device').partitionBy(OUT, 'person_id', 'person_id').clusterBy('claimed_on', Timestamp, Desc).clusterBy(IN, 'device_id', 'device_id', Asc).create()
+schema.edgeLabel('own').from('person').to('device').materializedView('device_ownedby_person').ifNotExists().inverse().clusterBy('claimed_on', Desc).create()
