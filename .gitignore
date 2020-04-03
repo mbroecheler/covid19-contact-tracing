@@ -1,10 +1,13 @@
-# Mac
+# Personal
 .idea/
 .DS_Store
 *.iml
 
 # Compiled class file
 *.class
+
+# Data files
+test_*.csv
 
 # Log file
 *.log

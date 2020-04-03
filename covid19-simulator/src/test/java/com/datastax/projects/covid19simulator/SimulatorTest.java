@@ -13,22 +13,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SimulatorTest
 {
 
-    @Test
-    public void fullTest() {
-        CmdLine.main(new String[]{"-f test_"});
-    }
-
-    @Test
-    public void dateTest() {
-        Instant.parse("2020-05-17T22:21:56.654Z");
-    }
-
-    @Test
+    //@Test
     public void fileOutput() {
         CmdLine.run("/Users/matthias/Data/covid19-sim/test_", getConfig(100, 24*28, 5, 0.02));
     }
 
-    @Test
+    //@Test
     public void simpleTest() {
         Simulator simulator = new Simulator(getConfig(1000, 24, 5, 0.01));
         System.out.println("All encounters:");
@@ -53,7 +43,7 @@ public class SimulatorTest
         }
     }
 
-    @Test
+    //@Test
     public void roughCountPerformance() {
         roughCount(1000000, 1000, 0.01);
     }
