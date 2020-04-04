@@ -35,9 +35,9 @@ wearing face masks, avoiding unnecessary body contact, being more diligent about
 would likely still be too risky).
 
 However, while we are ramping up testing capacity to allow us to implement this model, our current approach to tracing infections to identify people who are at risk and need to be tested or isolated
-does not scale to a population of hundreds of millions of people. Manual collecting such data and using people's memory to recall whom they have been in contact with is too laborious and error prone.
+does not scale to a population of hundreds of millions of people. Manually collecting such data and using people's memory to recall whom they have been in contact with is too laborious and error prone.
 
-We need a technical solution to this problem. Most everybody nowadays carries a smart phone or similar electronic device on them at all times. We can use those devices to keep track of whom we have come
+We need a technical solution to this problem. Most everybody nowadays carries a smartphone or similar electronic device on them at all times. We can use those devices to keep track of whom we have come
 in contact with and automatically record this data. That would solve the "faulty memory" problem and make it simpler to identify who may have been exposed and needs to be tested. Singapore has announced
 that they will open-source the application they wrote to do exactly this via bluetooth (i.e. detect which other devices are in close proximity via bluetooth signal).
 In addition, we need a database to collect all this data and build a contact graph across the entire population so that we can easily determine who is at risk when somebody tests positive or shows symptoms.
@@ -51,10 +51,10 @@ open-source project allows us to come together and get this done as quickly as p
 
 This project consists of a number of components:
 
-- **Database schema and implementation**: A scalable database model to build contact graph between devices and their owners in order to track who was in close proximity to whom at what point in time for
+- **Database schema and implementation**: A scalable database model to build a contact graph between devices and their owners in order to track who was in close proximity to whom at what point in time for
 effective disease containment while storing the least amount of personal information.
 
-- **Web application**: A web application that stores the contact records recorded and uploaded by devices that run the contact tracing application.
+- **Web application**: A web application that stores the contacts recorded and uploaded by devices that run the contact tracing application.
 
 - **Simulator**: A simple contact simulator for generating artificial contact graphs to test the system with.
 
