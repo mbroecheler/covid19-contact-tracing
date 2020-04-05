@@ -28,10 +28,10 @@ reasonable concern regarding user privacy. Providing a high degree of transparen
 
 This project consists of a number of components:
 
-- **Database schema and implementation**: A scalable database model to build contact graph between devices and their owners in order to track who was in close proximity to whom at what point in time for
+- **Database schema and implementation**: A scalable database model to build a contact graph between devices and their owners in order to track who was in close proximity to whom at what point in time for
 effective disease containment while storing the least amount of personal information.
 
-- **Web application**: A web application that stores the contact records recorded and uploaded by devices that run the contact tracing application.
+- **Web application**: A web application that stores the contacts recorded and uploaded by devices that run the contact tracing application.
 
 - **Simulator**: A simple contact simulator for generating artificial contact graphs to test the system with.
 
