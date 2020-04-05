@@ -5,7 +5,7 @@ Assuming that Singapore will soon open-source their contact detection applicatio
 likely infection paths for containment. This project contains a scalable database implementation for capturing and analyzing the contact data, a web application to access the data,
 a simulator for generating people interaction data for testing purposes, and a notebook to analyze the resulting contact graph.
 
-
+![Device Contact Graph](/docs/images/device_graph.png?raw=true)
 
 ## Why do we need this?
 
