@@ -7,6 +7,9 @@ import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.CqlSessionBuilder;
 import com.datastax.oss.driver.api.core.NoNodeAvailableException;
 import com.datastax.oss.driver.api.core.connection.ConnectionInitException;
+import com.datastax.oss.driver.api.core.cql.BatchStatement;
+import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+import com.datastax.oss.driver.api.core.cql.ResultSet;
 import com.datastax.oss.driver.api.core.metadata.Node;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
@@ -64,7 +67,6 @@ public class DbSessionClientManager implements Managed {
                             LOGGER.info("Creating schema.");
                             DbSchema.createSchema(keyspace,dseSession);
                         }
-
                         sessionFuture.complete(dseSession);
                     } catch (Exception e) {
                         throw new RuntimeException("Could not initialize the database.", e);
@@ -198,6 +200,20 @@ public class DbSessionClientManager implements Managed {
     public GraphResultSet executeGraphTraversal(GraphTraversal traversal) {
         FluentGraphStatement stmt =  FluentGraphStatement.newInstance(traversal).setGraphName(keyspace);
         return getSession().execute(stmt);
+    }
+
+    public GraphResultSet executeGraphTraversal(String gremlinScript, Map<String, Object> parameters) {
+        ScriptGraphStatementBuilder builder = ScriptGraphStatement.builder(gremlinScript).setGraphName(keyspace);
+        builder.setQueryParams(parameters);
+        return getSession().execute(builder.build());
+    }
+
+    public PreparedStatement prepare(String stmt) {
+        return getSession().prepare(String.format(stmt, keyspace));
+    }
+
+    public ResultSet executeBatch(BatchStatement batch) {
+        return getSession().execute(batch.setKeyspace(keyspace));
     }
 
 

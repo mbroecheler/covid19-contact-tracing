@@ -44,10 +44,6 @@ public class ContactTracingResource {
         this.infectionWindowHours = infectionWindowHours;
     }
 
-    private CqlSession session() {
-        return sessionManager.getSession();
-    }
-
     @GET
     @Path("{person_id}/infected")
     @Timed

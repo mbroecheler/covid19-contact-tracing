@@ -6,6 +6,7 @@ import com.datastax.projects.db.DatabaseConfiguration;
 import com.datastax.projects.db.DbSessionClientManager;
 import com.datastax.projects.health.DatabaseHealthCheck;
 import com.datastax.projects.resources.ContactTracingResource;
+import com.datastax.projects.resources.DeviceResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -39,10 +40,14 @@ public class ContactTracerApplication extends Application<ContactTracerConfigura
         environment.healthChecks().register("database", dbHealthCheck);
 
 
-        final ContactTracingResource resource = new ContactTracingResource(
+        final DeviceResource deviceResource = new DeviceResource(
+                sessionClientManager);
+        environment.jersey().register(deviceResource);
+
+        final ContactTracingResource contactResource = new ContactTracingResource(
                 sessionClientManager, configuration.getDefaultInfectionWindowHours()
         );
-        environment.jersey().register(resource);
+        environment.jersey().register(contactResource);
     }
 
 

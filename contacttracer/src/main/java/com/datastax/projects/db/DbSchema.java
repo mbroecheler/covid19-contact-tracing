@@ -25,8 +25,8 @@ public class DbSchema {
 
             "schema.edgeLabel('contact').tableName('device_contact').ifNotExists().from('device').to('device').partitionBy(OUT, 'device_id', 'device1_id').clusterBy('time', Timestamp, Desc).clusterBy(IN, 'device_id', 'device2_id', Asc).property('duration_sec', Int).create()\n" +
             "schema.edgeLabel('contact').from('device').to('device').materializedView('device_contact_inverse').ifNotExists().partitionBy(IN, 'device_id').clusterBy('time', Desc).clusterBy(OUT, 'device_id', Asc).create()\n" +
-            "schema.edgeLabel('own').tableName('person_owns_device').ifNotExists().from('person').to('device').partitionBy(OUT, 'person_id', 'person_id').clusterBy('claimed_on', Timestamp, Desc).clusterBy(IN, 'device_id', 'device_id', Asc).create()\n" +
-            "schema.edgeLabel('own').from('person').to('device').materializedView('device_ownedby_person').ifNotExists().inverse().clusterBy('claimed_on', Desc).create()"
+            "schema.edgeLabel('own').tableName('person_owns_device').ifNotExists().from('person').to('device').partitionBy(OUT, 'person_id', 'person_id').clusterBy(IN, 'device_id', 'device_id', Asc).property('claimed_on', Timestamp).create()\n" +
+            "schema.edgeLabel('own').from('person').to('device').materializedView('device_ownedby_person').ifNotExists().inverse().create()"
             ;
 
     public static final String CREATE_KEYSPACE =
