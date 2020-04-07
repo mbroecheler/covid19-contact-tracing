@@ -1,4 +1,4 @@
-# SARS-CoV-2 Contact Tracing
+# COVID19 Contact Tracing
 
 This project demonstrates an open-source backend implementation of automated, scalable contact tracing to identify potentially infected individuals for testing and quarantine.
 Assuming that Singapore will soon open-source their contact detection application, this project could serve as the backend for capturing the contact information and computing
@@ -97,7 +97,7 @@ This is a brief introduction to the components of this contact tracing prototype
 - **[Simulator](simulator/)**: Provides more details on how the simulator works.
 
 Note, that DataStax Enterprise (DSE) is free for development use and DataStax is also making DSE freely available for any production use by 
-officials and authorities for the purposes of SARS-CoV-2 contact tracing as demonstrated in this project. As such, all the components and dependencies of this project
+officials and authorities for the purposes of COVID19 contact tracing as demonstrated in this project. As such, all the components and dependencies of this project
 are free to use.
 
 ## How can you help?
