@@ -1,22 +1,21 @@
-# contacttracer
+# Contact Tracing Backend Application
 
-How to start the contacttracer application
----
+## How to run this application
 
-1. Run `mvn clean install` to build your application
-1. Start application with `java -jar target/contacttracer-0.1-SNAPSHOT.jar server config.yml`
-1. To check that your application is running enter url `http://localhost:8080`
-
-Health Check
----
+Please follow the quick-start instructions on the homepage of this repository. It is important to have the database running before starting the application.
 
 To see your applications health enter url `http://localhost:8081/healthcheck`
 
-You know have the backend up and running. It exposes the following endpoints:
+Once you have the application up and running, it exposes the following endpoints:
 
-```
-    POST    /device/{device_id}/claim                       Claim a device for a person identified by UUID
-    POST    /device/{device_id}/contacts                    Upload contact records from a device
-    GET     /tracer/{person_id}/infected?from={timestamp}   Trace potential infection paths for the given individual
-```
-where `{device_id}` is a string identifier for a tracked device and `{person_id}` is the UUID of an individual. `from` is an optional timestamp parameter 
+- `/device/{device_id}/claim` (POST): Claim a device for a person. {device_id} is the string identifier of the device. Expects a JSON payload described by the DeviceClaim class in the api package.
+- `/device/{device_id}/contacts` (POST): Upload contact records from a device. Expects a JSON payload described by the DeviceContact class in the api package.
+- `/tracer/{person_id}/infected?from={timestamp}` (GET): Trace potential infection paths for the given person identified by the {person_id} UUID. Returns a list of JSON objects described by the Contact class.
+
+The current endpoints are mostly meant to demonstrate how the backend would work. The exact APIs will need to be adjusted to meet the interface of the mobile tracking application (for the `/device` resource)
+and the needs of officials and health care workers using the tracing functionality (for the `/tracer' resource).
+
+## Build instructions
+
+Run `mvn package` to build the application
+

@@ -96,6 +96,9 @@ This is a brief introduction to the components of this contact tracing prototype
 - **[Backend](backend/)**: Provides more details on the dropwizard application for recording data and providing tracing analysis.
 - **[Simulator](simulator/)**: Provides more details on how the simulator works.
 
+Note, that DataStax Enterprise (DSE) is free for development use and DataStax is also making DSE freely available for any production use by 
+officials and authorities for the purposes of SARS-CoV-2 contact tracing as demonstrated in this project. As such, all the components and dependencies of this project
+are free to use.
 
 ## How can you help?
 
