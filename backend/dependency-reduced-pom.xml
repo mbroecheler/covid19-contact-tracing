@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.datastax.projects</groupId>
   <artifactId>contacttracer</artifactId>
-  <name>contacttracer</name>
+  <name>Contact-Tracer</name>
   <version>0.1-SNAPSHOT</version>
   <build>
     <plugins>
